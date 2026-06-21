@@ -1,8 +1,8 @@
 # nvim-aware-claude
 
 A lightweight [Claude Code](https://code.claude.com) plugin that makes Claude aware of a
-running **Neovim** session. When your prompt refers to the editor — "this file", "the
-selection", "the error under the cursor", "the quickfix list" — Claude is given a live
+running **Neovim** session. When your prompt refers to the editor: "this file", "the
+selection", "the error under the cursor", "the quickfix list". Claude is given a live
 snapshot of Neovim's state: current file, cursor, visual selection, search register,
 quickfix list, visible windows, and listed buffers.
 
@@ -37,9 +37,6 @@ claude --plugin-dir /path/to/nvim-aware-claude
 /plugin install nvim-aware-claude@nvim-aware-claude
 ```
 
-(Replace the repo with wherever you host it; the bundled `.claude-plugin/marketplace.json`
-makes the repo itself a single-plugin marketplace.)
-
 ## Usage
 
 1. Open a file in Neovim.
@@ -72,14 +69,14 @@ claude-nvim --nvim-context full --model opus # unknown flags pass through to cla
 ```
 
 By default the launcher also auto-loads this plugin (`--plugin-dir`), so you do **not**
-need to install it globally — going through `claude-nvim` is enough. If you _do_ install
-it globally (via the marketplace), set `NVIM_AWARE_AUTO_PLUGIN_DIR=0` to avoid loading it
-twice.
+need to install it globally. Going through `claude-nvim` is enough. 
 
-### Opt-in shell wrapper (like a `pi --nvim` setup)
+**If you _do_ install it globally (via the marketplace), set `NVIM_AWARE_AUTO_PLUGIN_DIR=0` to avoid loading it twice.**
+
+### Opt-in shell wrapper
 
 If you'd rather keep typing `claude` and only opt in with a flag, drop a wrapper function
-in your `~/.bashrc` / `~/.zshrc`. When any `--nvim…` flag is present it routes to the
+in your `~/.bashrc` / `~/.zshrc`. When any `--nvim` flag is present it routes to the
 launcher; otherwise it runs the real `claude` untouched:
 
 ```bash
@@ -112,7 +109,7 @@ All configuration is via environment variables.
 
 ### Prompt-context modes
 
-- **`auto`** (default) — inject a compact snapshot only when the prompt mentions the
+- **`auto`** (`default`) — inject a compact snapshot only when the prompt mentions the
   current file, buffer, selection, cursor, quickfix/errors/warnings, search, windows, or
   buffers. Cheap; nothing injected otherwise.
 - **`full`** — inject a compact snapshot before every turn.
@@ -125,21 +122,6 @@ All configuration is via environment variables.
   project directory (exact match → file containment → directory containment).
 - The `claude-nvim` launcher shows an interactive picker in a TTY, or uses the same
   heuristic when non-interactive. Pass `--nvim-server` to choose explicitly.
-
-## Layout
-
-```
-.claude-plugin/plugin.json     plugin manifest
-.claude-plugin/marketplace.json single-plugin marketplace
-.mcp.json                      registers the MCP server
-hooks/hooks.json               SessionStart + UserPromptSubmit
-hooks/*.mjs                    hook entry points
-commands/nvim.md               /nvim slash command
-mcp/nvim-mcp.mjs               stdio MCP server exposing nvim_context
-bin/nvim-context.mjs           CLI: print the live snapshot (also on Bash PATH)
-bin/claude-nvim                launcher: discover server, set env, exec claude
-lib/*.mjs                      shared zero-dep engine (discovery, snapshot, format)
-```
 
 ## Requirements
 
