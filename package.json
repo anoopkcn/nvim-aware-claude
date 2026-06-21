@@ -1,0 +1,17 @@
+{
+  "name": "nvim-aware-claude",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Lightweight Claude Code plugin that makes Claude aware of a running Neovim session.",
+  "keywords": ["claude-code", "claude", "neovim", "nvim"],
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "claude-nvim": "./bin/claude-nvim",
+    "nvim-context": "./bin/nvim-context.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}

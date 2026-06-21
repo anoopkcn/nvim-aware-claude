@@ -1,0 +1,13 @@
+{
+  "name": "nvim-aware-claude",
+  "version": "0.1.0",
+  "description": "Make Claude Code aware of a running Neovim session: live current file, cursor, selection, search, quickfix list, windows, and buffers.",
+  "author": {
+    "name": "Anoop K C",
+    "email": "anoopkcn@gmail.com"
+  },
+  "homepage": "https://github.com/anoopkcn/nvim-aware-claude",
+  "repository": "https://github.com/anoopkcn/nvim-aware-claude",
+  "license": "MIT",
+  "keywords": ["claude-code", "plugin", "neovim", "nvim", "editor"]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "nvim-aware-claude",
+  "metadata": {
+    "description": "Neovim awareness for Claude Code — live editor context from a running Neovim session."
+  },
+  "owner": {
+    "name": "Anoop K C",
+    "email": "anoopkcn@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "nvim-aware-claude",
+      "source": "./",
+      "description": "Make Claude Code aware of a running Neovim session.",
+      "version": "0.1.0"
+    }
+  ]
+}
